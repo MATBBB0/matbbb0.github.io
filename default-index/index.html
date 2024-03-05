@@ -350,6 +350,153 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sevenw.top/2023/09/21/%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%BD%95%E5%8F%96%E9%A2%84%E6%B5%8B%E5%88%86%E7%B1%BB%E8%AE%AD%E7%BB%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Seven Wei">
+      <meta itemprop="description" content="成事不说，遂事不谏，既往不咎">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不的">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/09/21/%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%BD%95%E5%8F%96%E9%A2%84%E6%B5%8B%E5%88%86%E7%B1%BB%E8%AE%AD%E7%BB%83/" class="post-title-link" itemprop="url">大学生录取预测分类训练</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-09-21 11:39:49" itemprop="dateCreated datePublished" datetime="2023-09-21T11:39:49+08:00">2023-09-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-11-19 19:19:11" itemprop="dateModified" datetime="2023-11-19T19:19:11+08:00">2023-11-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/" itemprop="url" rel="index"><span itemprop="name">实验报告</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/09/21/%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%BD%95%E5%8F%96%E9%A2%84%E6%B5%8B%E5%88%86%E7%B1%BB%E8%AE%AD%E7%BB%83/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/09/21/大学生录取预测分类训练/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="中山大学计算机学院"><a href="#中山大学计算机学院" class="headerlink" title="中山大学计算机学院"></a><strong>中山大学计算机学院</strong></h3><h3 id="人工智能"><a href="#人工智能" class="headerlink" title="人工智能"></a><strong>人工智能</strong></h3><h3 id="本科生实验报告"><a href="#本科生实验报告" class="headerlink" title="本科生实验报告"></a><strong>本科生实验报告</strong></h3><h5 id="（2022学年春季学期）"><a href="#（2022学年春季学期）" class="headerlink" title="（2022学年春季学期）"></a><strong>（2022学年春季学期）</strong></h5><p><em><strong>课程名称：Artificial Intelligence</strong></em></p>
+<h3 id="一、实验题目"><a href="#一、实验题目" class="headerlink" title="一、实验题目"></a>一、实验题目</h3><p>在数据集data1.txt上完成大学生录取预测分类训练：</p>
+<p>​        设计合适的网络结构，选择合适的损失函数</p>
+<p>​        利用训练集完成网络训练画出数据可视化图、loss曲线图，计算模型收敛后的分类准确率。</p>
+<h3 id="二、实验内容"><a href="#二、实验内容" class="headerlink" title="二、实验内容"></a>二、实验内容</h3><h5 id="1-算法原理"><a href="#1-算法原理" class="headerlink" title="1.算法原理"></a>1.算法原理</h5><p>线性回归试图找到一条合适的直线y&#x3D;w*x+b，让直线尽可能多的穿过样本点来拟合数据，说明特征值与标签值之间的规律。达到通过特征值来预测标签值的效果，而要找到最优的直线，需要通过不断调整权重w来实现，直到w使得所有的预测值与真实值之间的误差之和最小化，也就是损失函数（也叫代价函数）最小化。</p>
+<ul>
+<li><ul>
+<li><p>1）初始化权重w和截距b来构建最初的模型。</p>
+</li>
+<li><p>2）使用这个模型来计算损失函数</p>
+</li>
+<li><p>3）对损失函数求偏导</p>
+</li>
+<li><ul>
+<li><ul>
+<li>损失最小时，损失函数的导数值为0。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><ul>
+<li>4）运用偏导值和学习率更新权重，重复2~4步</li>
+</ul>
+</li>
+</ul>
+<p><strong>优点：</strong></p>
+<p>　　（1）思想简单，实现容易。建模迅速，对于小数据量、简单的关系很有效；</p>
+<p>　　（2）是许多强大的非线性模型的基础。</p>
+<p>　　（3）线性回归模型十分容易理解，结果具有很好的可解释性，有利于决策分析。</p>
+<p>　　（4）蕴含机器学习中的很多重要思想。</p>
+<p>　　（5）能解决回归问题。</p>
+<p><strong>缺点：</strong></p>
+<p>　　（1）对于非线性数据或者数据特征间具有相关性多项式回归难以建模.</p>
+<p>　　（2）难以很好地表达高度复杂的数据。</p>
+<h5 id="2-关键代码展示"><a href="#2-关键代码展示" class="headerlink" title="2.关键代码展示"></a>2.关键代码展示</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">data = np.genfromtxt(<span class="string">&#x27;C:\\Users\\Gabriel\\Desktop\\data1.txt&#x27;</span>, delimiter=<span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">X = data[:, :-<span class="number">1</span>]  <span class="comment"># 数据向量</span></span><br><span class="line">Y = data[:, -<span class="number">1</span>]   <span class="comment"># 标签向量</span></span><br><span class="line"></span><br><span class="line">X = (X - np.mean(X, axis=<span class="number">0</span>)) / np.std(X, axis=<span class="number">0</span>)   <span class="comment"># 正则化</span></span><br><span class="line">X = np.concatenate((np.ones((X.shape[<span class="number">0</span>], <span class="number">1</span>)), X), axis=<span class="number">1</span>)    <span class="comment"># 添加偏置</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的代码用于读入txt文件，并且将数据的数据部分和标签部分分离开来以便后面的各项操作。我们还需要将得到的数据进行正则化和偏置处理，正则化可以避免过拟合，偏置则通过引入一个额外的常数提高模型的表达能力。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">loss_function</span>(<span class="params">X, Y, weight</span>):</span><br><span class="line">    m = <span class="built_in">len</span>(Y)</span><br><span class="line">    h = sigmoid(np.dot(X, weight))</span><br><span class="line">    loss = -(<span class="number">1</span>/m) * (np.dot(Y, np.log(h)) + np.dot((<span class="number">1</span>-Y), np.log(<span class="number">1</span>-h)))</span><br><span class="line">    <span class="keyword">return</span> loss</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码定义两个函数，第一个是简单的计算sigmoid的函数。第二个是计算损失函数的函数，先通过点积加上sigmoid求出预测值h，再用预测值和真实值计算出损失函数，此处也需要按PPT上的添加上一个正则化避免过拟合。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">loss_history = []           <span class="comment"># 损失记录</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num_iterations):</span><br><span class="line">    h = sigmoid(np.dot(X, weight))</span><br><span class="line">    <span class="comment"># 计算当前损失值</span></span><br><span class="line">    loss = loss_function(X, Y, weight)</span><br><span class="line">    gradient = np.dot(X.T, (-Y/h + (<span class="number">1</span> - Y)/(<span class="number">1</span> - h)) * h * (<span class="number">1</span> - h))</span><br><span class="line">    weight -= learning_rate * gradient       <span class="comment"># 更新权重</span></span><br><span class="line">    loss_history.append(loss)</span><br></pre></td></tr></table></figure>
+
+<p>该部分代码为训练代码，我们一开始定义一个数组用于存放训练过程中的各个损失值。每次训练我们先用点积计算出预测值，随后对weight进行更新，我们通过对损失函数的求导式来更新。随后我们计算损失函数值，并添加到列表中便于之后图形的绘制。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制分类图</span></span><br><span class="line">plt.scatter(X[:, <span class="number">1</span>], X[:, <span class="number">2</span>], c=Y, cmap=<span class="string">&#x27;bwr&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Score 1&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Score 2&#x27;</span>)</span><br><span class="line">x1 = np.linspace(np.<span class="built_in">min</span>(X[:, <span class="number">1</span>]), np.<span class="built_in">max</span>(X[:, <span class="number">1</span>]), <span class="number">100</span>)</span><br><span class="line">x2 = -(weight[<span class="number">0</span>] + weight[<span class="number">1</span>] * x1) / weight[<span class="number">2</span>]</span><br><span class="line">plt.plot(x1, x2, color=<span class="string">&#x27;black&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;Predictions&#x27;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制损失曲线</span></span><br><span class="line">plt.plot(<span class="built_in">range</span>(num_iterations), loss_history)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Iterations&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Loss&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;Loss Curve&#x27;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算分类准确率</span></span><br><span class="line">predictions = np.<span class="built_in">round</span>(sigmoid(np.dot(X, weight)))</span><br><span class="line">accuracy = np.mean(predictions == Y)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;分类准确率为:%.2lf &#x27;</span> % accuracy)</span><br></pre></td></tr></table></figure>
+
+<p>该部分代码为图形绘制部分代码，我们第一张图先画了分类图，我们通过标签对各个点进行上色，并且根据我们的回归结果画出分类界线以进行比对。</p>
+<p>第二张图中我们绘制损失曲线，根据我们存放各训练中损失函数的列表即可绘制。</p>
+<p>最后我们将预测和实际标签比对，可知分类准确率。</p>
+<h3 id="三、实验结果及分析"><a href="#三、实验结果及分析" class="headerlink" title="三、实验结果及分析"></a>三、实验结果及分析</h3><h5 id="1-实验结果展示示例"><a href="#1-实验结果展示示例" class="headerlink" title="1.实验结果展示示例"></a>1.实验结果展示示例</h5><p><img src="/../pic/image-20230516193943405.png" alt="image-20230516193943405"></p>
+<p><img src="/../pic/image-20230516193950451.png" alt="image-20230516193950451"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">分类准确率为:0.90 </span><br></pre></td></tr></table></figure>
+
+<p>第一幅图为分类图，可以看到分类界限的两边几乎都是各自分类的点，只有分类界限附近的点有几个有混乱，可知分类效果较好。</p>
+<p>第二幅图为损失函数图，可以看到在1000次训练中，我们的损失函数快速下降。</p>
+<p>同时我们也通过直接输出看到了分类准确率在90%左右，达到了较好的分类效果。</p>
+<h3 id="四、思考题"><a href="#四、思考题" class="headerlink" title="四、思考题"></a>四、思考题</h3><p>本次实验中无思考题。</p>
+<h3 id="五、参考资料"><a href="#五、参考资料" class="headerlink" title="五、参考资料"></a>五、参考资料</h3><p>① week13 神经网络v2 —— Our Class</p>
+<p>② ML23-3  —— Our Class</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://sevenw.top/2023/09/21/%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -534,153 +681,6 @@
 
       
           <p>test</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://sevenw.top/2023/09/21/%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%BD%95%E5%8F%96%E9%A2%84%E6%B5%8B%E5%88%86%E7%B1%BB%E8%AE%AD%E7%BB%83/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Seven Wei">
-      <meta itemprop="description" content="成事不说，遂事不谏，既往不咎">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不的">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/09/21/%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%BD%95%E5%8F%96%E9%A2%84%E6%B5%8B%E5%88%86%E7%B1%BB%E8%AE%AD%E7%BB%83/" class="post-title-link" itemprop="url">大学生录取预测分类训练</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-09-21 11:39:49" itemprop="dateCreated datePublished" datetime="2023-09-21T11:39:49+08:00">2023-09-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-11-19 19:19:11" itemprop="dateModified" datetime="2023-11-19T19:19:11+08:00">2023-11-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/" itemprop="url" rel="index"><span itemprop="name">实验报告</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2023/09/21/%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%BD%95%E5%8F%96%E9%A2%84%E6%B5%8B%E5%88%86%E7%B1%BB%E8%AE%AD%E7%BB%83/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/09/21/大学生录取预测分类训练/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="中山大学计算机学院"><a href="#中山大学计算机学院" class="headerlink" title="中山大学计算机学院"></a><strong>中山大学计算机学院</strong></h3><h3 id="人工智能"><a href="#人工智能" class="headerlink" title="人工智能"></a><strong>人工智能</strong></h3><h3 id="本科生实验报告"><a href="#本科生实验报告" class="headerlink" title="本科生实验报告"></a><strong>本科生实验报告</strong></h3><h5 id="（2022学年春季学期）"><a href="#（2022学年春季学期）" class="headerlink" title="（2022学年春季学期）"></a><strong>（2022学年春季学期）</strong></h5><p><em><strong>课程名称：Artificial Intelligence</strong></em></p>
-<h3 id="一、实验题目"><a href="#一、实验题目" class="headerlink" title="一、实验题目"></a>一、实验题目</h3><p>在数据集data1.txt上完成大学生录取预测分类训练：</p>
-<p>​        设计合适的网络结构，选择合适的损失函数</p>
-<p>​        利用训练集完成网络训练画出数据可视化图、loss曲线图，计算模型收敛后的分类准确率。</p>
-<h3 id="二、实验内容"><a href="#二、实验内容" class="headerlink" title="二、实验内容"></a>二、实验内容</h3><h5 id="1-算法原理"><a href="#1-算法原理" class="headerlink" title="1.算法原理"></a>1.算法原理</h5><p>线性回归试图找到一条合适的直线y&#x3D;w*x+b，让直线尽可能多的穿过样本点来拟合数据，说明特征值与标签值之间的规律。达到通过特征值来预测标签值的效果，而要找到最优的直线，需要通过不断调整权重w来实现，直到w使得所有的预测值与真实值之间的误差之和最小化，也就是损失函数（也叫代价函数）最小化。</p>
-<ul>
-<li><ul>
-<li><p>1）初始化权重w和截距b来构建最初的模型。</p>
-</li>
-<li><p>2）使用这个模型来计算损失函数</p>
-</li>
-<li><p>3）对损失函数求偏导</p>
-</li>
-<li><ul>
-<li><ul>
-<li>损失最小时，损失函数的导数值为0。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li>4）运用偏导值和学习率更新权重，重复2~4步</li>
-</ul>
-</li>
-</ul>
-<p><strong>优点：</strong></p>
-<p>　　（1）思想简单，实现容易。建模迅速，对于小数据量、简单的关系很有效；</p>
-<p>　　（2）是许多强大的非线性模型的基础。</p>
-<p>　　（3）线性回归模型十分容易理解，结果具有很好的可解释性，有利于决策分析。</p>
-<p>　　（4）蕴含机器学习中的很多重要思想。</p>
-<p>　　（5）能解决回归问题。</p>
-<p><strong>缺点：</strong></p>
-<p>　　（1）对于非线性数据或者数据特征间具有相关性多项式回归难以建模.</p>
-<p>　　（2）难以很好地表达高度复杂的数据。</p>
-<h5 id="2-关键代码展示"><a href="#2-关键代码展示" class="headerlink" title="2.关键代码展示"></a>2.关键代码展示</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">data = np.genfromtxt(<span class="string">&#x27;C:\\Users\\Gabriel\\Desktop\\data1.txt&#x27;</span>, delimiter=<span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">X = data[:, :-<span class="number">1</span>]  <span class="comment"># 数据向量</span></span><br><span class="line">Y = data[:, -<span class="number">1</span>]   <span class="comment"># 标签向量</span></span><br><span class="line"></span><br><span class="line">X = (X - np.mean(X, axis=<span class="number">0</span>)) / np.std(X, axis=<span class="number">0</span>)   <span class="comment"># 正则化</span></span><br><span class="line">X = np.concatenate((np.ones((X.shape[<span class="number">0</span>], <span class="number">1</span>)), X), axis=<span class="number">1</span>)    <span class="comment"># 添加偏置</span></span><br></pre></td></tr></table></figure>
-
-<p>上面的代码用于读入txt文件，并且将数据的数据部分和标签部分分离开来以便后面的各项操作。我们还需要将得到的数据进行正则化和偏置处理，正则化可以避免过拟合，偏置则通过引入一个额外的常数提高模型的表达能力。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">loss_function</span>(<span class="params">X, Y, weight</span>):</span><br><span class="line">    m = <span class="built_in">len</span>(Y)</span><br><span class="line">    h = sigmoid(np.dot(X, weight))</span><br><span class="line">    loss = -(<span class="number">1</span>/m) * (np.dot(Y, np.log(h)) + np.dot((<span class="number">1</span>-Y), np.log(<span class="number">1</span>-h)))</span><br><span class="line">    <span class="keyword">return</span> loss</span><br></pre></td></tr></table></figure>
-
-<p>上面的代码定义两个函数，第一个是简单的计算sigmoid的函数。第二个是计算损失函数的函数，先通过点积加上sigmoid求出预测值h，再用预测值和真实值计算出损失函数，此处也需要按PPT上的添加上一个正则化避免过拟合。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">loss_history = []           <span class="comment"># 损失记录</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num_iterations):</span><br><span class="line">    h = sigmoid(np.dot(X, weight))</span><br><span class="line">    <span class="comment"># 计算当前损失值</span></span><br><span class="line">    loss = loss_function(X, Y, weight)</span><br><span class="line">    gradient = np.dot(X.T, (-Y/h + (<span class="number">1</span> - Y)/(<span class="number">1</span> - h)) * h * (<span class="number">1</span> - h))</span><br><span class="line">    weight -= learning_rate * gradient       <span class="comment"># 更新权重</span></span><br><span class="line">    loss_history.append(loss)</span><br></pre></td></tr></table></figure>
-
-<p>该部分代码为训练代码，我们一开始定义一个数组用于存放训练过程中的各个损失值。每次训练我们先用点积计算出预测值，随后对weight进行更新，我们通过对损失函数的求导式来更新。随后我们计算损失函数值，并添加到列表中便于之后图形的绘制。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制分类图</span></span><br><span class="line">plt.scatter(X[:, <span class="number">1</span>], X[:, <span class="number">2</span>], c=Y, cmap=<span class="string">&#x27;bwr&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Score 1&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Score 2&#x27;</span>)</span><br><span class="line">x1 = np.linspace(np.<span class="built_in">min</span>(X[:, <span class="number">1</span>]), np.<span class="built_in">max</span>(X[:, <span class="number">1</span>]), <span class="number">100</span>)</span><br><span class="line">x2 = -(weight[<span class="number">0</span>] + weight[<span class="number">1</span>] * x1) / weight[<span class="number">2</span>]</span><br><span class="line">plt.plot(x1, x2, color=<span class="string">&#x27;black&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;Predictions&#x27;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制损失曲线</span></span><br><span class="line">plt.plot(<span class="built_in">range</span>(num_iterations), loss_history)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Iterations&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Loss&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">&#x27;Loss Curve&#x27;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算分类准确率</span></span><br><span class="line">predictions = np.<span class="built_in">round</span>(sigmoid(np.dot(X, weight)))</span><br><span class="line">accuracy = np.mean(predictions == Y)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;分类准确率为:%.2lf &#x27;</span> % accuracy)</span><br></pre></td></tr></table></figure>
-
-<p>该部分代码为图形绘制部分代码，我们第一张图先画了分类图，我们通过标签对各个点进行上色，并且根据我们的回归结果画出分类界线以进行比对。</p>
-<p>第二张图中我们绘制损失曲线，根据我们存放各训练中损失函数的列表即可绘制。</p>
-<p>最后我们将预测和实际标签比对，可知分类准确率。</p>
-<h3 id="三、实验结果及分析"><a href="#三、实验结果及分析" class="headerlink" title="三、实验结果及分析"></a>三、实验结果及分析</h3><h5 id="1-实验结果展示示例"><a href="#1-实验结果展示示例" class="headerlink" title="1.实验结果展示示例"></a>1.实验结果展示示例</h5><p><img src="/../pic/image-20230516193943405.png" alt="image-20230516193943405"></p>
-<p><img src="/../pic/image-20230516193950451.png" alt="image-20230516193950451"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">分类准确率为:0.90 </span><br></pre></td></tr></table></figure>
-
-<p>第一幅图为分类图，可以看到分类界限的两边几乎都是各自分类的点，只有分类界限附近的点有几个有混乱，可知分类效果较好。</p>
-<p>第二幅图为损失函数图，可以看到在1000次训练中，我们的损失函数快速下降。</p>
-<p>同时我们也通过直接输出看到了分类准确率在90%左右，达到了较好的分类效果。</p>
-<h3 id="四、思考题"><a href="#四、思考题" class="headerlink" title="四、思考题"></a>四、思考题</h3><p>本次实验中无思考题。</p>
-<h3 id="五、参考资料"><a href="#五、参考资料" class="headerlink" title="五、参考资料"></a>五、参考资料</h3><p>① week13 神经网络v2 —— Our Class</p>
-<p>② ML23-3  —— Our Class</p>
 
       
     </div>

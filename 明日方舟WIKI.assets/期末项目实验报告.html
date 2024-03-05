@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/dragon2.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/dragon1.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"sevenw.top","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="明日方舟WIKI—— 数据库课程期末项目 应用需求介绍​	本应用旨在构建为广大玩家以及有兴趣的人们提供明日方舟有关资料的搜寻展示以及一些趣味功能。实现了干员、皮肤的总体展示页面以及详细资料展示；并且设计了用户的登录功能，各个用户有查看自己拥有的一些资源等权限；还有投票功能以及一些彩蛋跳转等。这些游戏信息、工具和社区互动，使得无论是新手还是资深玩家，都能通过这个应用更好地享受明日方舟的游戏体验。当然">
+<meta property="og:type" content="website">
+<meta property="og:title" content="不的">
+<meta property="og:url" content="https://sevenw.top/%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9FWIKI.assets/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.html">
+<meta property="og:site_name" content="不的">
+<meta property="og:description" content="明日方舟WIKI—— 数据库课程期末项目 应用需求介绍​	本应用旨在构建为广大玩家以及有兴趣的人们提供明日方舟有关资料的搜寻展示以及一些趣味功能。实现了干员、皮肤的总体展示页面以及详细资料展示；并且设计了用户的登录功能，各个用户有查看自己拥有的一些资源等权限；还有投票功能以及一些彩蛋跳转等。这些游戏信息、工具和社区互动，使得无论是新手还是资深玩家，都能通过这个应用更好地享受明日方舟的游戏体验。当然">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E9%83%A8%E5%88%86%E7%88%AC%E5%8F%96.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/327e0e6d9ad368ce660e937d4aa75ec.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240114220648.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E4%B8%BB%E9%A1%B5%E9%9D%A2.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E4%B8%BB%E9%A1%B5html.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E4%B8%80%E8%A7%88.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E4%B8%80%E8%A7%88html.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E7%99%BB%E5%BD%95%E6%8C%89%E9%92%AE.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E7%99%BB%E9%99%86%E7%95%8C%E9%9D%A21.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/login_views.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E6%B3%A8%E5%86%8C.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/logon_views.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E5%BF%98%E8%AE%B0%E5%AF%86%E7%A0%81.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/Account_models.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E5%B9%B2%E5%91%98%E4%BF%A1%E6%81%AF.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/man_views.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/operator_html.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/skin.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/skin_present.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/skin_views.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/bag.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/bag_present.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E4%B8%BB%E9%A1%B5%E9%9D%A2%E8%BF%9B%E5%85%A5Vote.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E6%8A%95%E7%A5%A8%E9%A1%B5%E9%9D%A2.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E7%A5%A8%E6%95%B0%E5%B1%95%E7%A4%BA.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E6%8A%95%E7%A5%A8%E4%B8%BB%E7%95%8C%E9%9D%A2%E4%BB%A3%E7%A0%81.png">
+<meta property="og:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E7%A5%A8%E6%95%B0%E5%B1%95%E7%A4%BA%E4%BB%A3%E7%A0%81.png">
+<meta property="article:published_time" content="2024-01-14T15:34:42.746Z">
+<meta property="article:modified_time" content="2024-01-14T15:34:42.746Z">
+<meta property="article:author" content="Seven Wei">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sevenw.top/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E9%83%A8%E5%88%86%E7%88%AC%E5%8F%96.png">
+
+<link rel="canonical" href="https://sevenw.top/%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9FWIKI.assets/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title> | 不的
+</title>
+  
+
+
+  <script data-pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?29901eb1ddbaf8fcd0038f8fc57e2b12";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">不的</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-music">
+
+    <a href="/music/" rel="section"><i class="fa fa-music fa-fw"></i>音乐</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <h1 id="明日方舟WIKI"><a href="#明日方舟WIKI" class="headerlink" title="明日方舟WIKI"></a><strong>明日方舟WIKI</strong></h1><h3 id="——-数据库课程期末项目"><a href="#——-数据库课程期末项目" class="headerlink" title="—— 数据库课程期末项目"></a><strong>—— 数据库课程期末项目</strong></h3><hr>
+<h3 id="应用需求介绍"><a href="#应用需求介绍" class="headerlink" title="应用需求介绍"></a><strong>应用需求介绍</strong></h3><p>​	本应用旨在构建为广大玩家以及有兴趣的人们提供明日方舟有关资料的搜寻展示以及一些趣味功能。实现了干员、皮肤的总体展示页面以及详细资料展示；并且设计了用户的登录功能，各个用户有查看自己拥有的一些资源等权限；还有投票功能以及一些彩蛋跳转等。这些游戏信息、工具和社区互动，使得无论是新手还是资深玩家，都能通过这个应用更好地享受明日方舟的游戏体验。当然要拓展成对于其它游戏或者应用的创意网站也极其方便。</p>
+<hr>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a><strong>准备工作</strong></h3><p>  <strong>数据爬取：</strong></p>
+<p>​    数据爬取工作，需要爬取干员（游戏人物）的信息、游戏设定中的地区信息、游戏中的干员皮肤信息等等。数据主要是从明日方舟wiki网站 <a target="_blank" rel="noopener" href="https://prts.wiki/w/%E9%A6%96%E9%A1%B5"><strong>明日方舟wiki百科</strong></a> 爬取得到，然后根据标签过滤出需要的信息，最终保存在xlsx文件中。最终的数据文件包括：</p>
+<blockquote>
+<ul>
+<li>游戏内干员初始立绘、精二立绘、皮肤立绘，爬虫下载到本地之后进行良好的命名组织，然后上传到 <a target="_blank" rel="noopener" href="https://gitee.com/huang-guangheng/image-hosting"><strong>图床</strong></a> 中去。</li>
+<li>skin_info.xlsx，存储游戏中干员皮肤的名字、关联的干员名、画师、所在系列、简要介绍。</li>
+<li>明日方舟干员数据+半身像+立绘URL.xlsx，存储游戏中干员的ID（自定义的主键）、名字、性别、种族、职业等信息，最重要的是半身像URL和立绘URL。我们将所需要的图片上传到图床中去，使用opengauss数据库存储其URL以定位大文件。</br></li>
+</ul>
+</blockquote>
+<p>这里给出一个例子，获得干员半身像的py文件get_bust.py：</p>
+<p><img src="/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E9%83%A8%E5%88%86%E7%88%AC%E5%8F%96.png" alt="部分爬取"></p>
+<p>首先获取一个格式化的URL并且使用request.get得到从服务器返回的HTML文件。然后，使用BeautifulSoup第三方库进行对于HTML文件的解析，得到解析好的HTML文本。接着根据标签进行过滤得到想要的半身像的所在URL。最后再去获得半身像的图片(png格式)</p>
+<p>   <strong>数据批量导入：</strong><br>       由于干员表和皮肤表都有非常大量的数据需要导入数据库，手工进行导入无疑会耗费大量的时间并且容易产生错误，所以在网上检索了相关资料之后，发现有django-import-export库为django的导入提供了简便的方法。然后依照着网上关于这个库的教程在resource.py以及admin.py对相关的批量导入类进行了创建以及注册。完成后即可在admin站点里看到import和export按钮，选取相应的数据文件后即可完成批量数据导入和导出（我们的数据库中对于导出功能并没有使用）。</p>
+<p>  <strong>图片批量压缩：</strong><br>       由于对于高分辨率的图片的展示较为缓慢，为了提高展示的观感，我们利用imagemagick库对图片进行批量分别率压缩。</p>
+<hr>
+<h3 id="应用系统设计（尤其是数据库设计-ER图等"><a href="#应用系统设计（尤其是数据库设计-ER图等" class="headerlink" title="应用系统设计（尤其是数据库设计&#x2F;ER图等"></a><strong>应用系统设计（尤其是数据库设计&#x2F;ER图等</strong></h3><p> <strong>ER 图设计：</strong></p>
+<p><img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/327e0e6d9ad368ce660e937d4aa75ec.png" alt="327e0e6d9ad368ce660e937d4aa75ec"></p>
+<p>上图即为我们概念模式中ER图的构建，总共有6个实体集以及5个联系集。</p>
+<p>实体集分别有Operators用于存储干员信息；Zhenying用来存储阵营信息；Record用来存储职业信息；Skin用来存储皮肤信息；Jiaju用来存储家具信息；Account存储账户信息。</p>
+<p>联系集有三个多对一的联系，另外有两个多对多的联系，在后文关系模式中会谈到一些更具体的实现。</p>
+<p> <strong>关系模式：</strong></p>
+<p>​	首先是从实体集直接转换出来的Operators表，其以ID作为主键，另外还有诸多其它信息字段，需要注意这里我们的occupation字段以及zhenying字段，由于我们对应有两个多对一（Operators为多端，zhenying和Record为一端）联系集，所以在转换为关系模式后我们将这两个字段设置为外键，分别对zhenying和Record进行引用。</p>
+<p>然后是从实体集直接转换出来的zhenying和Record表，他们分别以name和Occupations为主键，另外zhenying表中还有一个intro字段存储一些介绍文本，这两个关系都作为被参照关系被Operators所参照。</p>
+<p>接下来是从实体集转换出来的Skin表，本表以name作为主键，由于其与Operators有多对一关系，所以表格中的opID设计外键，参照关系是Operators，另外还有一些存储其它相关信息的字段。</p>
+<p>Jiaju表亦是从实体集转换而成的表，以name为主键，另外存储了家具的一些介绍信息。</p>
+<p>Account表也是如此，以email为主键，另外存储了一些有关注册登录的相关信息。</p>
+<p>两个多对多的关系我们通过单独建一张表来在关系模式中实现，对于Operators与Account之间的多对多关系user_op，我们综合了Operators以及Account两个表的主键作为主键；而对于Jiaju与Account之间的多对多关系user_jiaju，我们综合了Jiaju以及Account两个表的主键作为主键。</p>
+<p> <strong>Django框架结构：</strong></p>
+<p><img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240114220648.png" alt="微信图片_20240114220648"></p>
+<p>URLs: 虽然可以通过单个功能来处理来自每个 URL 的请求，但是编写单独的视图函数来处理每个资源更具有可维护性。</p>
+<p>URL 映射器用于根据请求 URL 将 HTTP 请求重定向到相应的视图。URL 映射器还可以匹配出现在 URL 中的字符串或数字的特定模式，并将其作为数据传递给视图功能。</p>
+<p>View: 视图是一个请求处理函数，它接收 HTTP 请求并返回 HTTP 响应。视图通过模型访问满足请求所需的数据，并将响应的格式委托给模板。</p>
+<p>Models: 模型是定义应用程序数据结构的 Python 对象，并提供在数据库中管理（添加，修改，删除）和查询记录的机制。</p>
+<p>Templates: 模板 是定义文件（例如 HTML 页面）的结构或布局的文本文件，用于表示实际内容的占位符。一个视图可以使用 HTML 模板，从数据填充它动态地创建一个 HTML 页面模型。可以使用模板来定义任何类型的文件的结构; 它不一定是 HTML！</p>
+<hr>
+<h3 id="系统实现（包括系统主要运行界面"><a href="#系统实现（包括系统主要运行界面" class="headerlink" title="系统实现（包括系统主要运行界面"></a><strong>系统实现（包括系统主要运行界面</strong></h3><p>  主页面首页：<br>  在主页面首页中展现了已注册用户的用户名以及值班干员塞雷娅的立绘<br>  <img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E4%B8%BB%E9%A1%B5%E9%9D%A2.png" alt="主页面"></p>
+<p>  主页面首页的部分html展示：<br>  <img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E4%B8%BB%E9%A1%B5html.png" alt="主页html"></p>
+<p>  主页面干员一览：<br>  点击首页中的指纹图标可以浮现出全308个干员的半身像一览：<br>  <img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E4%B8%80%E8%A7%88.png" alt="一览"><br>  在演示视频中可以看到这些干员的展示图片具有与鼠标的交互功能，会随着鼠标的移动以及触碰产生变化。</p>
+<p>  主页面中罗列干员半身像框的html实现代码：<br>  使用一个循环遍历数据库中的干员信息，根据干员对应的ID号在数据库中查找出干员的半身像url并且在前端中显示<br>  <img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E4%B8%80%E8%A7%88html.png" alt="一览html"></p>
+<p>  点击登录按钮或点击干员头像（首次登陆）即可跳转至登陆界面：<br>  <img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E7%99%BB%E5%BD%95%E6%8C%89%E9%92%AE.png" alt="登录按钮"><br>      登录按钮是正常的跳转登录的方式，未登录时点击干员头像的跳转则是违反了数据库应用的权限设计导致的，因为用户在没有登陆的时候不具有查看干员详细信息的权限，所以强制跳转到登录界面推荐用户登录之后进行查看。</p>
+<p>  登陆界面展示：</p>
+<p><img src="/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E7%99%BB%E9%99%86%E7%95%8C%E9%9D%A21.png" alt="登陆界面1"></p>
+<p>​       用户登录在view.py中的login函数实现如下。在前端的html中，如果用户点击了提交按钮，则获取POST的request请求，用各个变量接收用户输入的email，password，phone等等信息，进入数据库中查找是否有对应的用户名&#x2F;手机号以及密码，如果遇到错误，如密码错误或账号不存在等等情况，则抛出异常并重定位回登录界面，否则，成功登录并重定位回主页，将用户的email信息存储在request.session的字典中（用于实现检测用户是否登录，并限制只有登录了的用户可以查看干员信息的功能）<br>  <img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/login_views.png" alt="login_views"></p>
+<p>  注册界面展示：<br>  <img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E6%B3%A8%E5%86%8C.png" alt="注册"></p>
+<p>​       用户注册在view.py中的logon函数实现如下。在前端的html中，如果用户点击了提交按钮，则获取POST的request请求，用各个变量接收用户输入的email，password，phone等等信息，如果信息不合法（如手机号不足11位或两次密码不一致等），抛出异常并重定位回注册界面，否则，成功注册并在数据库中的Account表插入一条新的记录，将用户的信息存储进opengauss数据库中<br>  <img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/logon_views.png" alt="logon_views"></p>
+<p>  实现的附加功能：找回密码。实现思路是通过用户的手机号或用户名，在数据库中查找并修改对应的记录<br>  <img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E5%BF%98%E8%AE%B0%E5%AF%86%E7%A0%81.png" alt="忘记密码"></p>
+<p>​	后端中用户信息表Account在model.py中的存储模型如下：<br>  <img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/Account_models.png" alt="Account_models"></p>
+<p>  干员信息展示页面：<br>  点击干员半身像框即可进入干员信息页面<br>  <img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E5%B9%B2%E5%91%98%E4%BF%A1%E6%81%AF.png" alt="干员信息"></p>
+<p>  当用户点击了干员半身像框后，前端中通过超链接跳转至&#x2F;man的url中，跳转后执行view.py文件中的man函数，在该函数中，后端获取用户点击以后传来的request请求，其中包含的干员的ID信息，通过该ID信息进入数据库中查找对应的实体。此外，函数中也实现了如果没有获取到用户的登录session信息，则将重定位至登陆界面的功能。最后，将干员信息整合入operator.html并进行页面渲染即可实现干员的信息展示</p>
+<p>  view.py中的man函数展示：<br>  <img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/man_views.png" alt="man_views"><br>  operator.html展示：<br>  <img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/operator_html.png" alt="operator_html"></p>
+<p>  点击首页左上角的skin按钮，即可进入皮肤展示页面：<br>  <img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/skin.png" alt="skin"></p>
+<p>  其中展示了皮肤名，对应的干员名字，皮肤系列名，画师以及皮肤描述等信息:<br>  <img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/skin_present.png" alt="skin_present"></p>
+<p>展示皮肤的后端skin函数实现如下。实现思路是从数据库中获取所有的skin实体并传送给前端<br>  <img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/skin_views.png" alt="skin_views"></p>
+<p>点击首页左上角的bag按钮，即可进入用户的背包展示页面：<br>  （如果用户尚未登陆则被重定位至登陆界面）<br>  <img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/bag.png" alt="bag"></p>
+<p>  背包展示页面，其中展示了用户的用户名，拥有的家具以及拥有的干员：<br>  <img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/bag_present.png" alt="bag_present"><br>  这里的展示是基于两个多对多联系建立的表实现的。</p>
+<p>  为干员投票页面，在主页中点击左下角的第三个按钮进入到投票页面：<br>  <img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E4%B8%BB%E9%A1%B5%E9%9D%A2%E8%BF%9B%E5%85%A5Vote.png" alt="EnterVote"></p>
+<p> 点击进入后投票页面如下：<br>  <img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E6%8A%95%E7%A5%A8%E9%A1%B5%E9%9D%A2.png" alt="Vote"></p>
+<p>点击ViewResult按钮后进入到展示票数页面：<br>  <img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E7%A5%A8%E6%95%B0%E5%B1%95%E7%A4%BA.png" alt="Show_Vote"></p>
+<p>对于投票主界面而言，主题框架如下：</p>
+<p>  <img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E6%8A%95%E7%A5%A8%E4%B8%BB%E7%95%8C%E9%9D%A2%E4%BB%A3%E7%A0%81.png" alt="Show_Vote"></p>
+<p>投票主界面主要由头部栏、light_card、dark_card三个部分组成。后两者为两张卡片，卡片包括干员信息、投票按钮。通过脚本文件json的编写，实现了“投票按钮转换”，“详细信息开关”等一些动态效果，以及一些保存开关状态、开关静默的逻辑功能。<br></p>
+<blockquote>
+<ul>
+<li>投票按钮需要提交一个POST请求传给后端，让数据库中对应干员的票数加1;</li>
+<li>保存开关效果的逻辑功能需要使用到State变量存储上一次的状态，以免刷新就清空开关效果，产生不良体验。</li>
+<li>“详细信息开关”的目的是产生动态效果，让用户和网页有更好的交互而不是单纯的看和点击按钮。使用了<strong>按钮球平移</strong>的方法控制开关状态，进而控制干员信息的浮现。</li>
+</ul>
+</blockquote>
+<p>  投票展示界面的功能就比较简单，只是根据干员的信息、票数进行展示：<br>  <img src="/./%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.assets/%E7%A5%A8%E6%95%B0%E5%B1%95%E7%A4%BA%E4%BB%A3%E7%A0%81.png" alt="Show_Vote_Code"></p>
+<hr>
+<h3 id="组员分工"><a href="#组员分工" class="headerlink" title="组员分工"></a><strong>组员分工</strong></h3><p><strong>张嘉祺：</strong><br>负责数据库的概念模式以及逻辑模式的设计，HOME应用程序的编写，网站展示页面相关资料的收集以及编写，完成数据批量导入功能的设计。</p>
+<p><strong>黄光恒：</strong><br>负责数据的爬取、数据的组织和Vote应用程序的编写，以及部分关于数据库搭建的配置（尝试虚拟机配置并连接）。参与了数据库关系模式表的设计，合作设计了这个wiki的数据库idea。</p>
+<p><strong>梁乐峰：</strong><br>负责login应用中登录注册的实现以及账号数据库的实现。前端html和后端数据库的联系等。Opengauss在Docker虚拟机上的部署。</p>
+<hr>
+<h3 id="展示视频"><a href="#展示视频" class="headerlink" title="展示视频"></a><strong>展示视频</strong></h3><p>请到文件夹中的“数据库final.mp4”中查看展示视频。</p>
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9FWIKI"><span class="nav-number">1.</span> <span class="nav-text">明日方舟WIKI</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%BE%E7%A8%8B%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.0.1.</span> <span class="nav-text">—— 数据库课程期末项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E9%9C%80%E6%B1%82%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.0.2.</span> <span class="nav-text">应用需求介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.0.3.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%EF%BC%88%E5%B0%A4%E5%85%B6%E6%98%AF%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1-ER%E5%9B%BE%E7%AD%89"><span class="nav-number">1.0.4.</span> <span class="nav-text">应用系统设计（尤其是数据库设计&#x2F;ER图等</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0%EF%BC%88%E5%8C%85%E6%8B%AC%E7%B3%BB%E7%BB%9F%E4%B8%BB%E8%A6%81%E8%BF%90%E8%A1%8C%E7%95%8C%E9%9D%A2"><span class="nav-number">1.0.5.</span> <span class="nav-text">系统实现（包括系统主要运行界面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E5%91%98%E5%88%86%E5%B7%A5"><span class="nav-number">1.0.6.</span> <span class="nav-text">组员分工</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%95%E7%A4%BA%E8%A7%86%E9%A2%91"><span class="nav-number">1.0.7.</span> <span class="nav-text">展示视频</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Seven Wei"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Seven Wei</p>
+  <div class="site-description" itemprop="description">成事不说，遂事不谏，既往不咎</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://learnopengl-cn.github.io/" title="https:&#x2F;&#x2F;learnopengl-cn.github.io&#x2F;" rel="noopener" target="_blank">LearnOpenGL</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 src="//music.163.com/outchain/player?type=0&id=7794045453&auto=1&height=90"></iframe>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; Wed Sep 20 2023 08:00:00 GMT+0800 (中国标准时间) – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Seven Wei</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://sevenw.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://sevenw.top/%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9FWIKI.assets/%E6%9C%9F%E6%9C%AB%E9%A1%B9%E7%9B%AE%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.html";
+    this.page.identifier = "明日方舟WIKI.assets/期末项目实验报告.html";
+    this.page.title = "";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://sevenw.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/nico.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>

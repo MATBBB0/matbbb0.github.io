@@ -1169,7 +1169,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #63fff7;
+  background: #ffff67;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2408,9 +2408,9 @@ body {
 }
 .posts-expand .post-block,
 .post-block,
-background: rgba(255,
-255,
-0.8) !important {
+.pagination,
+.page {
+  background: rgba(255,255,255,0.8) !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }

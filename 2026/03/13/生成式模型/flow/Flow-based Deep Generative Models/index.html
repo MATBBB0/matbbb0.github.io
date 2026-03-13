@@ -22,17 +22,17 @@
     var CONFIG = {"hostname":"sevenw.top","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="So far, I’ve written about two types of generative models, and test (where \(\mathbf{x} \in \mathcal{D}\)) — because it is really hard! Taking the generative model with latent variables as an example,">
-<meta property="og:type" content="article">
+  <meta property="og:type" content="article">
 <meta property="og:title" content="不的">
 <meta property="og:url" content="https://sevenw.top/2026/03/13/%E7%94%9F%E6%88%90%E5%BC%8F%E6%A8%A1%E5%9E%8B/flow/Flow-based%20Deep%20Generative%20Models/index.html">
 <meta property="og:site_name" content="不的">
-<meta property="og:description" content="So far, I’ve written about two types of generative models, and test (where \(\mathbf{x} \in \mathcal{D}\)) — because it is really hard! Taking the generative model with latent variables as an example,">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sevenw.top/2026/03/13/%E7%94%9F%E6%88%90%E5%BC%8F%E6%A8%A1%E5%9E%8B/flow/Flow-based%20Deep%20Generative%20Models/assets/Pasted%20image%2020260313164958.png">
 <meta property="article:published_time" content="2026-03-13T07:58:02.076Z">
-<meta property="article:modified_time" content="2026-03-13T08:35:45.219Z">
+<meta property="article:modified_time" content="2026-03-13T08:50:00.527Z">
 <meta property="article:author" content="Seven Wei">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sevenw.top/2026/03/13/%E7%94%9F%E6%88%90%E5%BC%8F%E6%A8%A1%E5%9E%8B/flow/Flow-based%20Deep%20Generative%20Models/assets/Pasted%20image%2020260313164958.png">
 
 <link rel="canonical" href="https://sevenw.top/2026/03/13/%E7%94%9F%E6%88%90%E5%BC%8F%E6%A8%A1%E5%9E%8B/flow/Flow-based%20Deep%20Generative%20Models/">
 
@@ -205,7 +205,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2026-03-13 15:58:02 / 修改时间：16:35:45" itemprop="dateCreated datePublished" datetime="2026-03-13T15:58:02+08:00">2026-03-13</time>
+              <time title="创建时间：2026-03-13 15:58:02 / 修改时间：16:50:00" itemprop="dateCreated datePublished" datetime="2026-03-13T15:58:02+08:00">2026-03-13</time>
             </span>
 
           
@@ -240,69 +240,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>So far, I’ve written about two types of generative models, and <a
-href="生成式模型/vae/test.md">test</a> (where <span
-class="math inline">\(\mathbf{x} \in \mathcal{D}\)</span>) — because it
-is really hard! Taking the generative model with latent variables as an
-example, <span class="math inline">\(p(\mathbf{x}) = \int
-p(\mathbf{x}\vert\mathbf{z})p(\mathbf{z})d\mathbf{z}\)</span> can hardly
-be calculated as it is intractable to go through all possible values of
-the latent code <span class="math inline">\(\mathbf{z}\)</span>.</p>
-<p>Flow-based deep generative models conquer this hard problem with the
-help of <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1505.05770">normalizing
-flows</a>, a powerful statistics tool for density estimation. A good
-estimation of <span class="math inline">\(p(\mathbf{x})\)</span> makes
-it possible to efficiently complete many downstream tasks: sample
-unobserved but realistic new data points (data generation), predict the
-rareness of future events (density estimation), infer latent variables,
-fill in incomplete data samples, etc.</p>
-<h1 id="types-of-generative-models">Types of Generative Models</h1>
-<p>Here is a quick summary of the difference between GAN, VAE, and
-flow-based generative models:</p>
-<ol type="1">
-<li>Generative adversarial networks: GAN provides a smart solution to
-model the data generation, an unsupervised learning problem, as a
-supervised one. The discriminator model learns to distinguish the real
-data from the fake samples that are produced by the generator model. Two
-models are trained as they are playing a <a
-target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Minimax">minimax</a> game.</li>
-<li>Variational autoencoders: VAE inexplicitly optimizes the
-log-likelihood of the data by maximizing the evidence lower bound
-(ELBO).</li>
-<li>Flow-based generative models: A flow-based generative model is
-constructed by a sequence of invertible transformations. Unlike other
-two, the model explicitly learns the data distribution <span
-class="math inline">\(p(\mathbf{x})\)</span> and therefore the loss
-function is simply the negative log-likelihood.</li>
-</ol>
-<p><img
-src="https://lilianweng.github.io/posts/2018-10-13-flow-models/three-generative-models.png" />
-Comparison of three categories of generative models.</p>
-<h1 id="linear-algebra-basics-recap">Linear Algebra Basics Recap</h1>
-<p>We should understand two key concepts before getting into the
-flow-based generative model: the Jacobian determinant and the change of
-variable rule. Pretty basic, so feel free to skip.</p>
-<h2 id="jacobian-matrix-and-determinant">Jacobian Matrix and
-Determinant</h2>
-<p>Given a function of mapping a <span
-class="math inline">\(n\)</span>-dimensional input vector <span
-class="math inline">\(\mathbf{x}\)</span> to a <span
-class="math inline">\(m\)</span>-dimensional output vector, <span
-class="math inline">\(\mathbf{f}: \mathbb{R}^n \mapsto
-\mathbb{R}^m\)</span>, the matrix of all first-order partial derivatives
-of this function is called the <strong>Jacobian matrix</strong>, <span
-class="math inline">\(\mathbf{J}\)</span> where one entry on the i-th
-row and j-th column is <span class="math inline">\(\mathbf{J}_{ij} =
-\frac{\partial f_i}{\partial x_j}\)</span>.</p>
-<p><span class="math display">\[
-\mathbf{J} = \begin{bmatrix}
-\frac{\partial f_1}{\partial x_1} &amp; \dots &amp; \frac{\partial
-f_1}{\partial x_n} \\[6pt]
-\vdots &amp; \ddots &amp; \vdots \\[6pt]
-\frac{\partial f_m}{\partial x_1} &amp; \dots &amp; \frac{\partial
-f_m}{\partial x_n} \\[6pt]
-\end{bmatrix}
-\]</span></p>
+        <p><img src="assets/Pasted%20image%2020260313164958.png" /></p>
 
     </div>
 
@@ -390,8 +328,6 @@ f_m}{\partial x_n} \\[6pt]
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#types-of-generative-models"><span class="nav-number">1.</span> <span class="nav-text">Types of Generative Models</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linear-algebra-basics-recap"><span class="nav-number">2.</span> <span class="nav-text">Linear Algebra Basics Recap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jacobian-matrix-and-determinant"><span class="nav-number">2.1.</span> <span class="nav-text">Jacobian Matrix and
-Determinant</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
